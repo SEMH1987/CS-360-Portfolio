@@ -1,2 +1,11 @@
-# CS-360-Portfolio
-SNHU CS 360 Mobile Architect and Programming Portfolio - CardVault App Project
+# CS 360: Mobile Architect and Programming
+## Project 3 Portfolio Artifact & Reflection
+
+### Project Overview
+The goal of the CardVault app was to build a clean, local-first inventory tracker for collectors and sellers who need to log trading cards and manage stock without dealing with slow cloud syncs or unnecessary user accounts. The main user need was fast, reliable local storage and a simple way to keep track of inventory levels. To support this, I designed three core screens: a secure login screen, a main database view displaying items in a clean grid layout, and an input form to quickly add or update card details. Keeping the user in mind meant removing extra clutter so someone can open the app, log a card, check stock levels, and get out. The UI was successful because it kept high-frequency actions, like adding stock or deleting an old row—accessible with a single tap directly on the screen.
+
+### Development Approach & Testing
+When it came to coding the app, I built everything in small, testable increments instead of writing a bunch of activity code all at once. I started by getting the SQLite database helper class working, verified that basic insert and delete operations were actually committing to storage using Logcat, and only then hooked up the custom layout adapter and runtime permissions. For testing, I ran the app repeatedly on the emulator after every major change, specifically testing edge cases like adding low-stock items to ensure the SMS permission prompt and notification logic fired correctly without crashing the activity lifecycle. This step-by-step testing process was critical because it revealed dynamic layout refresh bugs early on when records were deleted, making them easy to fix before the codebase got too complicated.
+
+### Challenges & Key Achievements
+Overcoming challenges in the build required some problem-solving around state management and runtime permissions. Handling user permission callbacks while keeping the database grid in sync when items were cleared required structuring clean event listeners in the adapter so the UI refreshed instantly without needing a hard reset of the activity. I felt most successful in how well the SQLite persistence and adapter data binding came together. Seeing the app take raw user input, write it securely to local storage, and dynamically render it in the grid view was easily the most satisfying part of the project, and taking a step-by-step approach to building software is definitely something I will carry into future CS projects.
